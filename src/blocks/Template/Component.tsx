@@ -6,10 +6,11 @@ export const TemplateBlock: React.FC<TemplateBlockProps> = (props) => {
     console.log(`This is a template block with id: ${field}`)
     return (
         <div>
-            
+            <div className="container mx-auto">
             <h1>Hello, World!</h1>
             <p>This is a simple React component.</p>
             <p>{field}</p>
+            </div>
         </div>
     );
 };

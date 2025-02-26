@@ -190,7 +190,15 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | TemplateBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | TemplateBlock
+    | TeamMemberBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -737,6 +745,23 @@ export interface TemplateBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamMemberBlock".
+ */
+export interface TeamMemberBlock {
+  columns?:
+    | {
+        name: string;
+        description: string;
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'teamMember';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1026,6 +1051,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         template?: T | TemplateBlockSelect<T>;
+        teamMember?: T | TeamMemberBlockSelect<T>;
       };
   meta?:
     | T
@@ -1131,6 +1157,22 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface TemplateBlockSelect<T extends boolean = true> {
   field?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamMemberBlock_select".
+ */
+export interface TeamMemberBlockSelect<T extends boolean = true> {
+  columns?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        image?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
