@@ -76,7 +76,7 @@ export const SoftwareHouseHero: React.FC<Page['hero']> = ({ links, media, richTe
               }}
             >
               {/* Phone Mockup */}
-              <div className="mockup-phone border-primary relative -left-[400px] scale-75 z-10">
+              <div className="mockup-phone border-primary relative -left-[550px] md:scale-75 z-10">
                 <div className="camera"></div>
                 <div className="display">
                   <div className="artboard artboard-demo phone-1 relative overflow-hidden">
@@ -93,7 +93,7 @@ export const SoftwareHouseHero: React.FC<Page['hero']> = ({ links, media, richTe
               </div>
 
               {/* Browser Mockup */}
-              <div className="mockup-browser border absolute w-full h-[calc(70vw*0.5625)] mt-10 z-0">
+              <div className="mockup-browser border absolute w-full h-[calc(60vw*0.5625)] mt-10 z-0">
                 <div className="mockup-browser-toolbar">
                   <div className="input border border-base-300">https://seusite.com.br</div>
                 </div>
