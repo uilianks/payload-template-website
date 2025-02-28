@@ -16,20 +16,28 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
   })
 
   return (
-    <div className="relative -mt-[10.4rem] flex items-center justify-center text-white">
-      {media && typeof media === 'object' && (
-        <Media
-          className="-mx-4 md:-mx-8 2xl:-mx-16 absolute inset-0 z-0"
-          imgClassName="object-cover w-full h-full"
-          priority
-          resource={media}
-        />
-      )}
-      <div className="container mb-8 z-10 relative flex items-center justify-center">
-        <div className="max-w-[36.5rem] md:text-center">
-          {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
+    <div className="relative min-h-screen flex items-center justify-center">
+      {/* Background Image Container */}
+      <div className="absolute inset-0">
+        {media && (
+          <Media
+            resource={media}
+            fill
+            priority
+            className="object-cover w-full h-full"
+            sizes="100vw"
+          />
+        )}
+        {/* Overlay com gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50" />
+      </div>
+
+      {/* Content */}
+      <div className="relative container mx-auto px-4 py-32 z-10 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          {richText && <RichText className="mb-8" data={richText} enableGutter={false} />}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex md:justify-center gap-4">
+            <ul className="flex justify-center gap-4">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>
@@ -40,11 +48,6 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
             </ul>
           )}
         </div>
-      </div>
-      <div className="min-h-[80vh] select-none">
-        {media && typeof media === 'object' && (
-          <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
-        )}
       </div>
     </div>
   )

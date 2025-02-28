@@ -198,6 +198,9 @@ export interface Page {
     | FormBlock
     | TemplateBlock
     | TeamMemberBlock
+    | HeroBlock
+    | CompetenciasBlock
+    | StatisticsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -762,6 +765,67 @@ export interface TeamMemberBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock".
+ */
+export interface HeroBlock {
+  title: string;
+  description?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CompetenciasBlock".
+ */
+export interface CompetenciasBlock {
+  titulo: string;
+  descricao: string;
+  competencias?:
+    | {
+        titulo: string;
+        descricao: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'competencias';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticsBlock".
+ */
+export interface StatisticsBlock {
+  statistics?:
+    | {
+        label: string;
+        number: number;
+        /**
+         * Ex: +, $, etc
+         */
+        prefix?: string | null;
+        /**
+         * Ex: k, M, %, etc
+         */
+        suffix?: string | null;
+        /**
+         * Quantas colunas este item deve ocupar
+         */
+        columns?: ('1' | '2' | '3' | 'full') | null;
+        /**
+         * Cole o path do ícone SVG aqui
+         */
+        icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statistics';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1052,6 +1116,9 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         template?: T | TemplateBlockSelect<T>;
         teamMember?: T | TeamMemberBlockSelect<T>;
+        hero?: T | HeroBlockSelect<T>;
+        competencias?: T | CompetenciasBlockSelect<T>;
+        statistics?: T | StatisticsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1171,6 +1238,52 @@ export interface TeamMemberBlockSelect<T extends boolean = true> {
         name?: T;
         description?: T;
         image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CompetenciasBlock_select".
+ */
+export interface CompetenciasBlockSelect<T extends boolean = true> {
+  titulo?: T;
+  descricao?: T;
+  competencias?:
+    | T
+    | {
+        titulo?: T;
+        descricao?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticsBlock_select".
+ */
+export interface StatisticsBlockSelect<T extends boolean = true> {
+  statistics?:
+    | T
+    | {
+        label?: T;
+        number?: T;
+        prefix?: T;
+        suffix?: T;
+        columns?: T;
+        icon?: T;
         id?: T;
       };
   id?: T;

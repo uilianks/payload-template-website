@@ -9,6 +9,8 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TemplateBlock } from '@/blocks/Template/Component'
 import { TeamMembersBlock } from './TeamMembers/Component'
+import { CompetenciasBlock } from '@/blocks/Competencias/Component'
+import { StatisticsBlock } from '@/blocks/Statistics/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +20,8 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   template: TemplateBlock,
   teamMember: TeamMembersBlock,
+  competencias: CompetenciasBlock,
+  statistics: StatisticsBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -38,7 +42,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div className="py-24 first:pt-0 last:pb-0" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>

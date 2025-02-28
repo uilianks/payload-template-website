@@ -22,6 +22,8 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { TemplateBlock } from '@/blocks/Template/config'
 import { TeamMemberBlock } from '@/blocks/TeamMembers/config'
+import { CompetenciasBlock } from '@/blocks/Competencias/config'
+import { StatisticsBlock } from '@/blocks/Statistics/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -77,7 +79,18 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, TemplateBlock, TeamMemberBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                TemplateBlock,
+                TeamMemberBlock,
+                HeroBlock,
+                CompetenciasBlock,
+                StatisticsBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
