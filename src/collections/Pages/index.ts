@@ -87,7 +87,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 TemplateBlock,
                 TeamMemberBlock,
-                HeroBlock,
                 CompetenciasBlock,
                 StatisticsBlock,
               ],

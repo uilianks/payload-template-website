@@ -198,7 +198,6 @@ export interface Page {
     | FormBlock
     | TemplateBlock
     | TeamMemberBlock
-    | HeroBlock
     | CompetenciasBlock
     | StatisticsBlock
   )[];
@@ -765,17 +764,6 @@ export interface TeamMemberBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroBlock".
- */
-export interface HeroBlock {
-  title: string;
-  description?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'hero';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CompetenciasBlock".
  */
 export interface CompetenciasBlock {
@@ -1116,7 +1104,6 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         template?: T | TemplateBlockSelect<T>;
         teamMember?: T | TeamMemberBlockSelect<T>;
-        hero?: T | HeroBlockSelect<T>;
         competencias?: T | CompetenciasBlockSelect<T>;
         statistics?: T | StatisticsBlockSelect<T>;
       };
@@ -1240,16 +1227,6 @@ export interface TeamMemberBlockSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroBlock_select".
- */
-export interface HeroBlockSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
   id?: T;
   blockName?: T;
 }
@@ -1708,6 +1685,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  /**
+   * Upload the logo image here
+   */
+  logo: string | Media;
   navItems?:
     | {
         link: {
@@ -1765,6 +1746,7 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {
