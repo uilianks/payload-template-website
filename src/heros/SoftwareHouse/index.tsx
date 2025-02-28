@@ -43,7 +43,7 @@ export const SoftwareHouseHero: React.FC<Page['hero']> = ({ links, media, richTe
                 />
               </div>
 
-              <div className="mockup-code w-full">
+              <div className="mockup-code w-full pl-2">
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
@@ -64,7 +64,7 @@ export const SoftwareHouseHero: React.FC<Page['hero']> = ({ links, media, richTe
                 Transformamos suas ideias em soluções digitais inovadoras. Desenvolvimento de
                 websites, aplicativos e sistemas sob medida para seu negócio.
               </p>
-              <button className="btn btn-primary">Começar Projeto</button>
+              <button className="btn">Começar Projeto</button>
             </div>
           </div>
           <div className="col-span-6">
@@ -83,7 +83,7 @@ export const SoftwareHouseHero: React.FC<Page['hero']> = ({ links, media, richTe
                     {/* Método 1: Usando Image */}
                     <Image
                       src="/images/app-screenshot.png" // Coloque sua imagem em public/images/
-                      alt="App Screenshot"
+                      alt=""
                       fill
                       className="object-cover"
                       priority
